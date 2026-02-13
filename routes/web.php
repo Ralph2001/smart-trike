@@ -16,9 +16,9 @@ Route::view('/', 'welcome');
 // Login
 Route::get('/signup', [AuthController::class, 'showRegistrationForm'])->name('signup');
 
-// Dispatcher signup
-Route::get('/signup/dispatcher', [AuthController::class, 'showDispatcherForm'])->name('signup.dispatcher');
-Route::post('/signup/dispatcher', [AuthController::class, 'registerDispatcher']);
+// // Dispatcher signup
+// Route::get('/signup/dispatcher', [AuthController::class, 'showDispatcherForm'])->name('signup.dispatcher');
+// Route::post('/signup/dispatcher', [AuthController::class, 'registerDispatcher']);
 
 // Driver signup
 Route::get('/signup/driver', [AuthController::class, 'showDriverForm'])->name('signup.driver');
@@ -30,11 +30,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Protected routes
-Route::middleware(['auth'])->group(function() {
-    Route::get('/dashboard', function() {
-        return view('dashboard.index');
-    })->name('dashboard');
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    });
 });
+
 
 /*
 |--------------------------------------------------------------------------

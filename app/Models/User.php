@@ -45,4 +45,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isDispatcher()
+    {
+        return $this->role === 'dispatcher';
+    }
+
+    public function isDriver()
+    {
+        return $this->role === 'driver';
+    }
 }
