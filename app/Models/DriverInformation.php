@@ -34,8 +34,7 @@ class DriverInformation extends Model
         'model',
         'year_acquired',
         'status',
-        'barangay_id',
-    ];
+         ];
 
     // Relation to user
     public function user()
@@ -43,9 +42,5 @@ class DriverInformation extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Relation to barangay
-    public function barangay()
-    {
-        return $this->belongsTo(Barangay::class);
-    }
+
 }

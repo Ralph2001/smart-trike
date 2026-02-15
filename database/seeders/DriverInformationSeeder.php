@@ -49,7 +49,7 @@ class DriverInformationSeeder extends Seeder
                 'model' => 'Honda TMX',
                 'year_acquired' => now()->year - $i,
                 'status' => 'active',
-                'barangay_id' => $i, 
+                
             ]);
         }
     }

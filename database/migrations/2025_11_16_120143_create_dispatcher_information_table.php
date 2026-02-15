@@ -16,11 +16,6 @@ return new class extends Migration
                 ->constrained('users')
                 ->onDelete('cascade');
 
-            // Barangay assignment (primary area of responsibility)
-            $table->foreignId('barangay_id')
-                ->nullable()
-                ->constrained('barangays')
-                ->onDelete('set null');
 
             // Dispatcher personal info
             $table->string('first_name');
@@ -30,13 +25,7 @@ return new class extends Migration
             $table->string('contact_number')->nullable();
             $table->string('address')->nullable();
 
-            // Duty Information
-            $table->enum('shift', ['morning', 'afternoon', 'evening'])
-                ->nullable(); // if you have shifting schedule
-            $table->string('assigned_terminal')->nullable(); // optional
-
-            // Employment info (optional but useful)
-            $table->date('date_started')->nullable();
+    
             $table->enum('status', ['active', 'inactive', 'suspended'])
                 ->default('active');
 

@@ -46,15 +46,9 @@ return new class extends Migration
             $table->year('year_acquired')->nullable();
 
             // Status
-            $table->enum('status', ['active', 'inactive', 'suspended'])
-                ->default('active');
+            $table->enum('status', ['active', 'inactive', 'suspended'])->default('active');
 
             $table->timestamps();
-
-            $table->foreignId('barangay_id')
-                ->nullable()
-                ->constrained('barangays')
-                ->onDelete('set null');
         });
     }
 

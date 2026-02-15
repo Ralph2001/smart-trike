@@ -13,8 +13,7 @@ class DispatcherInformation extends Model
 
     protected $fillable = [
         'user_id',
-        'barangay_id',
-        'first_name',
+       'first_name',
         'middle_name',
         'last_name',
         'suffix',
@@ -32,9 +31,5 @@ class DispatcherInformation extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Relation to barangay
-    public function barangay()
-    {
-        return $this->belongsTo(Barangay::class);
-    }
+
 }

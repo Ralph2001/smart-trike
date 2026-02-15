@@ -24,3 +24,7 @@
     @apply text-fg-brand font-semibold border-b-2 border-fg-brand;
     /* Example active styles */
 }
+
+.main-color {
+    color: #0053A1
+}

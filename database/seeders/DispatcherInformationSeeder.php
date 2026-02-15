@@ -28,7 +28,7 @@ class DispatcherInformationSeeder extends Seeder
             // Create dispatcher information
             DispatcherInformation::create([
                 'user_id' => $user->id,
-                'barangay_id' => $i, // assign to existing barangay
+              
                 'first_name' => "DispatcherFirst$i",
                 'middle_name' => "M",
                 'last_name' => "DispatcherLast$i",

@@ -1,3 +1,0 @@
-<div>
-    Driver Dashboard
-</div>
