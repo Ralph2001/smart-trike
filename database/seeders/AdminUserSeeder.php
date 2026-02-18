@@ -14,10 +14,9 @@ class AdminUserSeeder extends Seeder
         // Check if admin already exists
         if (!User::where('role', 'admin')->exists()) {
             User::create([
-                'name' => 'Administrator',
-                'email' => 'admin@example.com', // optional
-                'account_id' => 'ADMIN01',      // fixed or auto-generated
-                'password' => Hash::make('ADMIN01'), // initial password same as account_id
+                'email' => 'admin@example.com', 
+                'username' => 'Admin',      // fixed or auto-generated
+                'password' => Hash::make('123456'), // initial password same as account_id
                 'role' => 'admin',
             ]);
         }

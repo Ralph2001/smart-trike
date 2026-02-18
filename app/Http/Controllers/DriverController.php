@@ -15,14 +15,21 @@ class DriverController extends Controller
         $user = Auth::user();
         $driverInfo = $user->driverInfo;
 
-        // Check if the driver is in the queue and get the position
-        $queue = DriverQueue::where('driver_id', $user->id)->where('status', 'waiting')->first();
+        // 1. Get the current user's waiting record for today
+        $myQueueRecord = DriverQueue::where('driver_id', $user->id)
+            ->where('status', 'waiting')
+            ->whereDate('created_at', now()->today())
+            ->first();
 
-        // If the driver is in the queue, pass the queue position to the view
-        if ($queue) {
-            $queuePosition = $queue->queue_position;
-        } else {
-            $queuePosition = null;  // Driver is not in the queue
+        $queuePosition = null;
+
+        if ($myQueueRecord) {
+            // 2. CALCULATE POSITION: 
+            // Count how many drivers checked in BEFORE this driver today and are still 'waiting'
+            $queuePosition = DriverQueue::where('status', 'waiting')
+                ->whereDate('created_at', now()->today())
+                ->where('created_at', '<', $myQueueRecord->created_at)
+                ->count() + 1;
         }
 
         return view('driver.home', compact('driverInfo', 'queuePosition'));
@@ -31,26 +38,24 @@ class DriverController extends Controller
     public function checkIn(Request $request)
     {
         $user = Auth::user();
+        $today = now()->today();
 
-        // 1. Check if the driver is already waiting
-        $isWaiting = DriverQueue::where('driver_id', $user->id)
+        // 1. Prevent duplicate check-ins for the same day
+        $alreadyInQueueToday = DriverQueue::where('driver_id', $user->id)
             ->where('status', 'waiting')
+            ->whereDate('created_at', $today)
             ->exists();
 
-        if ($isWaiting) {
+        if ($alreadyInQueueToday) {
             return redirect()->back()->with('error', 'You are already in the queue.');
         }
 
-        // 2. Calculate next position once
-        $nextPosition = DriverQueue::where('status', 'waiting')->max('queue_position') + 1;
-
-        // 3. Create the entry (Handles both first-time check-in and post-ride reset)
+        // 2. Simple Create: The timestamp handles the "position" logic automatically
         DriverQueue::create([
-            'driver_id'      => $user->id,
-            'queue_position' => $nextPosition,
-            'status'         => 'waiting',
+            'driver_id' => $user->id,
+            'status'    => 'waiting',
         ]);
 
-        return redirect()->back()->with('success', "Checked in successfully. Your queue position is $nextPosition.");
+        return redirect()->back()->with('success', "Checked in successfully!");
     }
 }

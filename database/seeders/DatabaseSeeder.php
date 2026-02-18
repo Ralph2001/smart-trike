@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminUserSeeder::class,
-             DriverInformationSeeder::class,
-             DispatcherInformationSeeder::class,
+            //  DriverInformationSeeder::class,
+            //  DispatcherInformationSeeder::class,
         ]);
     }
 }

@@ -32,9 +32,8 @@ class DispatcherController extends Controller
         }
 
 
-        // Update Queue: Nullify position and change status
+        // Update Queue: change status
         $driverQueueEntry->update([
-            'queue_position' => null, 
             'status'         => 'on_ride',
         ]);
 

@@ -13,9 +13,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'name',
+        'username',
         'email', // Added for standard Laravel auth/notifications
-        'account_id',
         'password',
         'role', // Added so you can assign roles on creation
       

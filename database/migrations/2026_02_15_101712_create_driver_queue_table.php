@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('driver_queue', function (Blueprint $table) {
-             $table->id();
-    $table->foreignId('driver_id')->constrained('users')->onDelete('cascade');  // Foreign key from users table
-    $table->integer('queue_position');  // Position of the driver in the queue
-    $table->enum('status', ['waiting', 'dispatched', 'on_ride'])->default('waiting');  // Current status
-    $table->timestamps();
+        Schema::create('driver_queues', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('driver_id')->constrained('users')->onDelete('cascade');
+            $table->enum('status', ['waiting', 'dispatched', 'on_ride'])->default('waiting');
+            $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

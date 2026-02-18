@@ -9,12 +9,11 @@ class DriverQueue extends Model
 {
     use HasFactory;
 
-    protected $table = 'driver_queue';
+    protected $table = 'driver_queues';
 
 
     protected $fillable = [
         'driver_id',
-        'queue_position',
         'status',
     ];
 

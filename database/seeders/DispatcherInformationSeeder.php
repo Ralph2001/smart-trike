@@ -16,7 +16,7 @@ class DispatcherInformationSeeder extends Seeder
         for ($i = 1; $i <= 3; $i++) {
 
             // Create user account
-            $accountId = 'DSP' . str_pad($i, 3, '0', STR_PAD_LEFT);
+            $accountId = 'DSP-' . str_pad($i, 3, '0', STR_PAD_LEFT);
 
             $user = User::create([
                 'name' => "Dispatcher $i",

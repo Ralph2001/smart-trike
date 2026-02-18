@@ -18,8 +18,8 @@
         <form action="/login" class="flex flex-col gap-3 w-full mt-2 flex-1" method="post">
              @csrf
             <div class="flex flex-col gap-1">
-                <label for="account_id" class="text-sm font-semibold text-gray-700">Account ID</label>
-                <input type="text" name="account_id" id="account_id" class="w-full rounded border border-gray-300">
+                <label for="username" class="text-sm font-semibold text-gray-700">Username</label>
+                <input type="text" name="username" id="username" class="w-full rounded border border-gray-300">
             </div>
             <div class="flex flex-col gap-1">
                 <label for="password" class="text-sm font-semibold text-gray-700">Password</label>

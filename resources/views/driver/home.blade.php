@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="min-h-screen bg-white md:bg-gray-50/30 p-4 lg:p-10">
-    <div class="max-w-4xl mx-auto">
+<div class="min-h-screen bg-white  md:bg-gray-50/30  p-4 lg:p-10">
+    <div class="max-w-4xl mx-auto my-auto ">
         
         <header class="mb-10">
-            <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Welcome, {{ auth()->user()->name }}</h1>
+            <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Welcome, {{ auth()->user()->username }}</h1>
             <p class="text-gray-500 mt-1 text-lg">Here is your operation status for today.</p>
         </header>
 
@@ -93,10 +93,10 @@
                         <span class="text-gray-500">MTOP Number</span>
                         <span class="font-semibold text-gray-900">{{ $driverInfo->mtop_number ?? 'N/A' }}</span>
                     </div>
-                    <div class="flex justify-between items-center text-sm">
+                    <!-- <div class="flex justify-between items-center text-sm">
                         <span class="text-gray-500">Unit Model</span>
                         <span class="font-semibold text-gray-900">{{ $driverInfo->model }} ({{ $driverInfo->color }})</span>
-                    </div>
+                    </div> -->
                 </div>
             </section>
         </div>
