@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('driver_queues', function (Blueprint $table) {
             $table->id();
             $table->foreignId('driver_id')->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['waiting', 'dispatched', 'on_ride'])->default('waiting');
+            $table->enum('status', ['waiting', 'on_ride'])->default('waiting');
             $table->timestamps();
         });
     }

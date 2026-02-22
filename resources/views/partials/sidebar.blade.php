@@ -24,8 +24,16 @@
 
             {{-- Admin Only --}}
             @if(auth()->user()->role === 'admin')
+
+                <li>
+                    <a href="#" class="flex items-center px-3 py-2 text-body rounded hover:bg-neutral-tertiary hover:text-fg-brand group">
+                        <x-heroicon-o-clipboard-document-check class="w-5 h-5 text-gray-500 group-hover:text-fg-brand transition duration-150" />
+                        <span class="ml-3 font-semibold">Trip History</span>
+                    </a>
+                </li>
+
                 <!-- Manage Dispatcher Dropdown -->
-                <li x-data="{ open: false }">
+                <!-- <li x-data="{ open: false }">
                     <button @click="open = ! open" class="flex items-center w-full justify-between px-3 py-2 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                         <x-heroicon-o-users class="w-5 h-5 text-gray-500 group-hover:text-fg-brand transition duration-150" />
                         <span class="flex-1 ml-3 text-left whitespace-nowrap font-semibold">Manage Dispatchers</span>
@@ -43,7 +51,8 @@
                     </ul>
                 </li>
 
-                <!-- Manage Drivers Dropdown -->
+
+                
                 <li x-data="{ open: false }">
                     <button @click="open = ! open" class="flex items-center w-full justify-between px-3 py-2 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                         <x-tabler-helmet class="w-5 h-5 text-gray-500 group-hover:text-fg-brand transition duration-150" />
@@ -62,13 +71,12 @@
                     </ul>
                 </li>
 
-                <!-- Reports Section -->
                 <li>
                     <a href="#" class="flex items-center px-3 py-2 text-body rounded hover:bg-neutral-tertiary hover:text-fg-brand group {{ request()->routeIs('admin.reports') ? 'bg-neutral-tertiary text-fg-brand' : '' }}">
                         <x-heroicon-o-chart-bar class="w-5 h-5 text-gray-500 group-hover:text-fg-brand transition duration-150" />
                         <span class="ml-3 font-semibold">Reports & Analytics</span>
                     </a>
-                </li>
+                </li> -->
             @endif
 
             {{-- Dispatcher Only --}}
